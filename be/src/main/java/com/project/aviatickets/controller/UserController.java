@@ -12,12 +12,12 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
-@RequestMapping({"/api"})
+@RequestMapping({"/api/v1/users"})
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/{id}", method = RequestMethod.GET)
     public ResponseEntity<User> getUser(@PathVariable("id") Integer userId){
         User user = this.userService.getById(userId);
 
@@ -39,7 +39,7 @@ public class UserController {
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<User> deleteUser (@PathVariable("id") Integer id){
         User user = this.userService.getById(id);
 

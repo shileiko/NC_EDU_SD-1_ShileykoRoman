@@ -11,9 +11,8 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  //private userUrl = 'http://localhost:8080/user-portal/user';
   private userUrl = '/api';
 
   public getUsers() {
@@ -21,7 +20,7 @@ export class UserService {
   }
 
   public deleteUser(user) {
-    return this.http.delete(this.userUrl + "/"+ user.id);
+    return this.http.delete(this.userUrl + '/' + user.id);
   }
 
   public createUser(user) {
