@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  private userUrl = '/api';
+  private userUrl = '/api/v1/users';
 
   public getUsers() {
     return this.http.get<User[]>(this.userUrl);
