@@ -2,29 +2,29 @@ package com.project.aviatickets.models;
 
 public class Role {
     private int id;
-    private String role;
+    private String name;
 
-    public Role(){
+    public Role() {
     }
 
-    public Role(int id, String role) {
+    public Role(int id, String name) {
         this.id = id;
-        this.role = role;
-    }
-
-    public int getId() {
-        return id;
+        this.name = name;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

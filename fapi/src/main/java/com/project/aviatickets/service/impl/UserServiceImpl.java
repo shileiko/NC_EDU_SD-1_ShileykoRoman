@@ -4,6 +4,7 @@ import com.project.aviatickets.models.User;
 import com.project.aviatickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,9 +32,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public List<User> findAll() {
+    public List<User> getAll() {
         RestTemplate restTemplate = new RestTemplate();
-        User[] usersResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/users", User[].class);
+        User[] usersResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/usersba", User[].class);
         return usersResponse == null ? Collections.emptyList() : Arrays.asList(usersResponse);
     }
 
@@ -41,7 +42,20 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public User save(User user) {
         user.setPass(bCryptPasswordEncoder.encode(user.getPass()));
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/v1/user", user, User.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/v1/usersba", user, User.class).getBody();
+    }
+
+    @Override
+    public User getById(Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "/api/v1/usersba/" + id, User.class);
+    }
+
+    @Override
+    public ResponseEntity delete(Integer id) {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + "api/v1/usersba/" + id);
+        return ResponseEntity.noContent().build();
     }
 
     @Override
@@ -58,5 +72,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
         return authorities;
     }
+
 
 }

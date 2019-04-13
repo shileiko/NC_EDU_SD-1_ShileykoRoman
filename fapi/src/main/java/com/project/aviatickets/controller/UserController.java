@@ -3,7 +3,7 @@ package com.project.aviatickets.controller;
 import com.project.aviatickets.models.User;
 import com.project.aviatickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,20 +16,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping
-    public List<User> getAllUsers(){
-        return userService.findAll();
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(userService.getById(id));
     }
 
-    @GetMapping("/login/{login}")
-    public User getUserByLogin(@PathVariable String login) {
-        return userService.findByLogin(login);
+    @PostMapping
+    public ResponseEntity saveUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.save(user));
     }
 
-    @RequestMapping(value="/signup", method = RequestMethod.POST, produces = "application/json")
-    public User saveUser(@RequestBody User user){
-        return userService.save(user);
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable Integer id) {
+        return userService.delete(id);
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> findAll(){
+        return ResponseEntity.ok(userService.getAll());
     }
 }
 
