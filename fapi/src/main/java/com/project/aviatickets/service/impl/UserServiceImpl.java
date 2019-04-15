@@ -40,8 +40,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     @Override
     public User save(User user) {
-        user.setPass(bCryptPasswordEncoder.encode(user.getPass()));
         RestTemplate restTemplate = new RestTemplate();
+        user.setPass(bCryptPasswordEncoder.encode(user.getPass()));
+        user.setRole(user.getRole());
         return restTemplate.postForEntity(backendServerUrl + "/api/v1/usersba", user, User.class).getBody();
     }
 

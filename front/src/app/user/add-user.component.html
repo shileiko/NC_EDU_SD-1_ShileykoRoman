@@ -18,7 +18,8 @@
 
     <div class="form-group">
       <label for="pass">Password:</label>
-      <input [(ngModel)]="user.pass" placeholder="Password" name="pass" class="form-control" id="pass">
+      <input [(ngModel)]="user.pass" alt="" type="password" placeholder="Password" name="pass" class="form-control" id="pass">
+      <input onchange="if ($('#pass').get(0).type=='password') $('#pass').get(0).type='text'; else $('#pass').get(0).type='password';" name="fff" type="checkbox" value="false"> Show password
     </div>
 
     <button class="btn btn-success" (click)="createUser()">Create</button>

@@ -20,8 +20,6 @@ export class AddUserComponent {
       .subscribe( data => {
         alert('User created successfully.');
       });
-
   }
-
 }
 

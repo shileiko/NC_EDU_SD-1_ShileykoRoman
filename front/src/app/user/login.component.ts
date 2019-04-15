@@ -8,6 +8,7 @@ import {ApiService} from '../service/api.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
@@ -21,13 +22,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     const loginPayload = {
-      username: this.loginForm.controls.username.value,
-      password: this.loginForm.controls.password.value
+      email: this.loginForm.controls.email.value,
+      pass: this.loginForm.controls.pass.value
     };
     this.apiService.login(loginPayload).subscribe(data => {
       if (data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['list-user']);
+        this.router.navigate(['users']);
       } else {
         this.invalidLogin = true;
         alert(data.message);
@@ -38,8 +39,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     window.localStorage.removeItem('token');
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.required]
+      email: ['', Validators.compose([Validators.required])],
+      pass: ['', Validators.required]
     });
   }
 
