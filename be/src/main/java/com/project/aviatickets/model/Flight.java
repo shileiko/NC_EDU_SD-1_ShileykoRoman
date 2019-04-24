@@ -23,21 +23,21 @@ public class Flight {
     private Calendar arrivalTime;
 
     @Column(name = "Transfers")
-    private char transfers;
+    private boolean transfers;
 
-    @Column(name = "Operator")
-    private String operator;
+    @Column(name = "Aviaoperator")
+    private String aviaoperator;
 
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Calendar departureTime, Calendar arrivalTime, char transfers, String operator) {
+    public Flight(String fromPlace, String toPlace, Calendar departureTime, Calendar arrivalTime, boolean transfers, String aviaoperator) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.transfers = transfers;
-        this.operator = operator;
+        this.aviaoperator = aviaoperator;
     }
 
     public int getId() {
@@ -80,19 +80,19 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
-    public char getTransfers() {
+    public boolean getTransfers() {
         return transfers;
     }
 
-    public void setTransfers(char transfers) {
+    public void setTransfers(boolean transfers) {
         this.transfers = transfers;
     }
 
-    public String getOperator() {
-        return operator;
+    public String getAviaperator() {
+        return aviaoperator;
     }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
+    public void setAviaoperator(String aviaoperator) {
+        this.aviaoperator = aviaoperator;
     }
 }

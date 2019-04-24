@@ -34,8 +34,6 @@ public class UserController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<User> saveUser(@RequestBody @Valid User user){
-        Role roleUser = roleRepository.findByName("USER");
-        user.setRole(roleUser);
 
         if (user == null){
             return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
@@ -67,5 +65,16 @@ public class UserController {
         }
 
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+
+    @RequestMapping(value="/login/{username}", method = RequestMethod.GET)
+    public ResponseEntity<User> getUserByLogin(@PathVariable(name = "username") String username){
+        User user = this.userService.findByUsername(username);
+
+        if (user == null){
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 }

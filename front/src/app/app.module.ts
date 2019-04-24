@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
 import {UserService} from './service/user.service';
+import {TokenStorage} from './config/token-provider';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AddUserComponent} from './user/add-user.component';
+import {Interceptor} from './service/interceptor';
+import {LogUserService} from './service/log-user.service';
+import { NavbarComponent } from './component/navbar/navbar.component';
+import {MainPageService} from './service/main-page.service';
+import { MainPageComponent } from './component/main-page/main-page.component';
 import { LoginComponent } from './user/login.component';
-import {ApiService} from './service/api.service';
-import {TokenInterceptor} from './service/interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     AddUserComponent,
+    NavbarComponent,
+    MainPageComponent,
     LoginComponent
   ],
   imports: [
@@ -26,8 +32,8 @@ import {TokenInterceptor} from './service/interceptor';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, ApiService, {provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
+  providers: [UserService, MainPageService, LogUserService, TokenStorage, {provide: HTTP_INTERCEPTORS,
+    useClass: Interceptor,
     multi : true}],
   bootstrap: [AppComponent]
 })

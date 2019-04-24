@@ -1,30 +1,29 @@
 package com.project.aviatickets.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Role {
+    @JsonIgnore
     private int id;
-    private String role;
+    private String name;
 
-    public Role() {
-    }
-
-    public Role(int id, String role) {
-        this.id = id;
-        this.role = role;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public Role(){
     }
 
     public int getId() {
         return id;
     }
 
-    public String getRole() {
-        return role;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

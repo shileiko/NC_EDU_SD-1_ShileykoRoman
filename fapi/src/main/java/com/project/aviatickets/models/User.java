@@ -6,21 +6,31 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class User {
     private int id;
     private String username;
+    private String firstname;
     private String surname;
-    private String pass;
+    private String password;
     private String email;
     private Role role;
 
     public User() {
     }
 
-    public User(int id, String username, String surname, String pass, String email, Role role) {
+    public User(int id, String username, String firstname, String surname, String password, String email, Role role) {
         this.id = id;
         this.username = username;
+        this.firstname = firstname;
         this.surname = surname;
-        this.pass = pass;
+        this.password = password;
         this.email = email;
         this.role = role;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public int getId() {
@@ -47,12 +57,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

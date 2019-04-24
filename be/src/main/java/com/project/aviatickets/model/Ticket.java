@@ -24,12 +24,12 @@ public class Ticket {
     private String typeOfSeat;
 
     @Column(name = "Luggage")
-    private char luggage;
+    private boolean luggage;
 
     public Ticket() {
     }
 
-    public Ticket(Flight flight, User user, BigDecimal price, String typeOfSeat, char luggage) {
+    public Ticket(Flight flight, User user, BigDecimal price, String typeOfSeat, boolean luggage) {
         this.flight = flight;
         this.user = user;
         this.price = price;
@@ -77,11 +77,11 @@ public class Ticket {
         this.typeOfSeat = typeOfSeat;
     }
 
-    public char getLuggage() {
+    public boolean getLuggage() {
         return luggage;
     }
 
-    public void setLuggage(char luggage) {
+    public void setLuggage(boolean luggage) {
         this.luggage = luggage;
     }
 

@@ -16,11 +16,14 @@ public class User {
     @Column(name = "username")
     private String username;
 
+    @Column(name = "firstname")
+    private String firstname;
+
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "pass")
-    private String pass;
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "email")
     private String email;
@@ -29,7 +32,23 @@ public class User {
     private Role role;
 
     public User() {
+    }
 
+    public User(String username, String firstname, String surname, String password, String email, Role role) {
+        this.username = username;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getUsername() {
@@ -48,12 +67,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPass() {
-        return pass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -88,14 +107,15 @@ public class User {
         return id == user.id &&
                 username.equals(user.username) &&
                 surname.equals(user.surname) &&
-                pass.equals(user.pass) &&
+                password.equals(user.password) &&
                 email.equals(user.email) &&
-                role.equals(user.role);
+                role.equals(user.role) &&
+                firstname.equals(user.firstname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, surname, pass, email, role);
+        return Objects.hash(id, firstname, username, surname, password, email, role);
     }
 
     @Override
@@ -104,7 +124,7 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", surname='" + surname + '\'' +
-                ", pass='" + pass + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
                 '}';

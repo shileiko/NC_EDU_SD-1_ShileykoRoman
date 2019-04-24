@@ -1,4 +1,8 @@
-<div class="col-md-6">
+<app-navbar></app-navbar>
+<br/>
+<br/>
+
+<div class="col-md-6 center-block">
   <h2 class="text-center">Registration</h2>
   <form>
     <div class="form-group">
@@ -7,8 +11,13 @@
     </div>
 
     <div class="form-group">
-      <label for="username">First Name:</label>
-      <input [(ngModel)]="user.username" placeholder="First Name" name="username" class="form-control" id="username">
+      <label for="username">Username:</label>
+      <input [(ngModel)]="user.username" placeholder="Username" name="username" class="form-control" id="username">
+    </div>
+
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input [(ngModel)]="user.firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname">
     </div>
 
     <div class="form-group">
@@ -17,11 +26,12 @@
     </div>
 
     <div class="form-group">
-      <label for="pass">Password:</label>
-      <input [(ngModel)]="user.pass" alt="" type="password" placeholder="Password" name="pass" class="form-control" id="pass">
-      <input onchange="if ($('#pass').get(0).type=='password') $('#pass').get(0).type='text'; else $('#pass').get(0).type='password';" name="fff" type="checkbox" value="false"> Show password
+      <label for="password">Password:</label>
+      <input [(ngModel)]="user.password" alt="" type="password" placeholder="Password" name="password" class="form-control" id="password">
+      <input onchange="if ($('#password').get(0).type=='password') $('#pass').get(0).type='text'; else $('#pass').get(0).type='password';" name="fff" type="checkbox" value="false"> Show password
     </div>
 
     <button class="btn btn-success" (click)="createUser()">Create</button>
   </form>
 </div>
+

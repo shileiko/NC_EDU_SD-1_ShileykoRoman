@@ -1,17 +1,22 @@
 package com.project.aviatickets.service.impl;
 
+import com.project.aviatickets.model.Role;
 import com.project.aviatickets.model.User;
+import com.project.aviatickets.repository.RoleRepository;
 import com.project.aviatickets.repository.UserRepository;
 import com.project.aviatickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
     public User getById(Integer id){
@@ -20,6 +25,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user){
+        Role roleUser = roleRepository.findByName("USER");
+        user.setRole(roleUser);
         userRepository.save(user);
     }
 
@@ -33,4 +40,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
+    @Override
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
 }

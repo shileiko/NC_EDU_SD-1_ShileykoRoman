@@ -1,6 +1,7 @@
 package com.project.aviatickets.controller;
 
 import com.project.aviatickets.models.User;
+import com.project.aviatickets.security.TokenProvider;
 import com.project.aviatickets.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TokenProvider tokenUtil;
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Integer id) {
@@ -34,6 +38,12 @@ public class UserController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<User>> findAll(){
         return ResponseEntity.ok(userService.getAll());
+    }
+
+    @GetMapping(value = "/username")
+    public User getUsername(@RequestHeader("Authorization") String token){
+        String usernameFromToken = tokenUtil.getUsernameFromToken(token);
+        return userService.findByUsername(usernameFromToken);
     }
 }
 
