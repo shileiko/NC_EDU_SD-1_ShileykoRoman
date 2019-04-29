@@ -11,12 +11,12 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/flights/")
+@RequestMapping("/api/v1/flightsba")
 public class FlightController {
     @Autowired
     private FlightServiceImpl flightService;
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Flight> getFlight(@PathVariable("id") Integer flightId){
         Flight flight = this.flightService.getById(flightId);
 
@@ -27,7 +27,7 @@ public class FlightController {
         return new ResponseEntity<Flight>(flight, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Flight> deleteFlight(@PathVariable("id") Integer flightId){
         Flight flight = this.flightService.getById(flightId);
 

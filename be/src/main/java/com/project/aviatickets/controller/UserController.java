@@ -5,6 +5,7 @@ import com.project.aviatickets.model.User;
 import com.project.aviatickets.repository.RoleRepository;
 import com.project.aviatickets.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,18 @@ public class UserController {
 
         this.userService.save(user);
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateUser(User user){
+        HttpHeaders headers = new HttpHeaders();
+
+        if (user == null){
+            return new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+        }
+
+        this.userService.save(user);
+        return new ResponseEntity<User>(user, headers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

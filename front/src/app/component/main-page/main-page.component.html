@@ -1,1 +1,45 @@
 <app-navbar></app-navbar>
+<br/>
+
+
+<div class="col-sm-8 offset-sm-2">
+  <div class="search-form">
+    <form class="form-inlin justify-content-center">
+      <h1>Search your flight</h1>
+        <div class="row">
+          <div class="col">
+            <label for="departure">From: </label>
+            <input type="text" class="form-control" placeholder="From" id="departure">
+          </div>
+          <!--<div class="col">-->
+            <!--<button (click)="changes()"></button>-->
+          <!--</div>-->
+          <div class="col">
+            <label for="arrival">To: </label>
+            <input type="text" class="form-control" placeholder="To" id="arrival">
+          </div>
+        </div>
+      <br/>
+      <div class="row">
+        <div class="col">
+          <label for="departure-date">Departure date: </label>
+          <input type="text" class="form-control" placeholder="" id="departure-date">
+        </div>
+        <div class="col">
+          <label for="arrival-date">Arrival date: </label>
+          <input type="text" class="form-control" placeholder="" id="arrival-date">
+        </div>
+      </div>
+    </form>
+    <br/>
+    <button class="btn btn-primary">Search</button>
+  </div>
+</div>
+
+
+
+<label>
+  Date Time:
+  <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+  <owl-date-time #dt></owl-date-time>
+</label>

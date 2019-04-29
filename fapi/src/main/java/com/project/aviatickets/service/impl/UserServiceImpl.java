@@ -58,6 +58,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return ResponseEntity.noContent().build();
     }
 
+    @Override
+    public User update(User user) {
+        RestTemplate restTemplate = new RestTemplate();
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        return restTemplate.postForEntity(backendServerUrl + "/api/v1/usersba", user, User.class).getBody();
+    }
+
 
     private Set<SimpleGrantedAuthority> getAuthority(User user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();

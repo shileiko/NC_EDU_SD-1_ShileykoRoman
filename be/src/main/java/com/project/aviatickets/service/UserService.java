@@ -1,5 +1,6 @@
 package com.project.aviatickets.service;
 
+import com.project.aviatickets.model.Role;
 import com.project.aviatickets.model.User;
 
 import java.util.List;

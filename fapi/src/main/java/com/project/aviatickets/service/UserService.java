@@ -11,4 +11,5 @@ public interface UserService {
     User save(User user);
     User getById(Integer id);
     ResponseEntity delete(Integer id);
+    User update(User user);
 }

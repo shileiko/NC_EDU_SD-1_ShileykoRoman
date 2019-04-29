@@ -1,31 +1,14 @@
-package com.project.aviatickets.model;
+package com.project.aviatickets.models;
 
-import javax.persistence.*;
 import java.util.Calendar;
 
-@Entity
-@Table(name="Flights")
 public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @Column(name = "FromPlace")
     private String fromPlace;
-
-    @Column(name = "ToPlace")
     private String toPlace;
-
-    @Column(name = "DepartureTime")
     private Calendar departureTime;
-
-    @Column(name = "ArrivalTime")
     private Calendar arrivalTime;
-
-    @Column(name = "Transfers")
     private boolean transfers;
-
-    @Column(name = "Aviaoperator")
     private String aviacompany;
 
     public Flight() {

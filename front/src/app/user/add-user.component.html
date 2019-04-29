@@ -2,9 +2,10 @@
 <br/>
 <br/>
 
-<div class="col-md-6 center-block">
-  <h2 class="text-center">Registration</h2>
-  <form>
+        <div class="col-sm-6 offset-sm-3">
+          <div class="registration-form">
+          <h1 class="display-4">Registration</h1>
+            <form action="" class="form-inlin justify-content-center">
     <div class="form-group">
       <label for="email">Email address:</label>
       <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
@@ -28,10 +29,18 @@
     <div class="form-group">
       <label for="password">Password:</label>
       <input [(ngModel)]="user.password" alt="" type="password" placeholder="Password" name="password" class="form-control" id="password">
-      <input onchange="if ($('#password').get(0).type=='password') $('#pass').get(0).type='text'; else $('#pass').get(0).type='password';" name="fff" type="checkbox" value="false"> Show password
     </div>
 
-    <button class="btn btn-success" (click)="createUser()">Create</button>
-  </form>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Role</label>
+      <select [(ngModel)]="user.role" class="form-control" id="exampleFormControlSelect1" name="role" required>
+        <option>ADMIN</option>
+        <option selected>USER</option>
+      </select>
+    </div>
+              <div class="modal-footer">
+    <button class="btn btn-primary" (click)="createUser()">OK</button>
+              </div>
+            </form>
+        </div>
 </div>
-

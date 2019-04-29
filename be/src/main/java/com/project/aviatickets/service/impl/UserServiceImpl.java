@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,8 +27,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user){
-        Role roleUser = roleRepository.findByName("USER");
-        user.setRole(roleUser);
         userRepository.save(user);
     }
 

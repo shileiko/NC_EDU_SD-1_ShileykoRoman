@@ -5,7 +5,8 @@ import { User } from '../models/user.model';
 import { UserService } from '../service/user.service';
 
 @Component({
-  templateUrl: './add-user.component.html'
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent {
 
@@ -20,6 +21,7 @@ export class AddUserComponent {
       .subscribe( data => {
         alert('User created successfully.');
       });
+    this.router.navigate(['main']);
   }
 }
 

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +14,10 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import {MainPageService} from './service/main-page.service';
 import { MainPageComponent } from './component/main-page/main-page.component';
 import { LoginComponent } from './user/login.component';
+import { FlightsComponent } from './component/flights/flights.component';
+import {FlightService} from './service/flight.service';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,16 +26,21 @@ import { LoginComponent } from './user/login.component';
     AddUserComponent,
     NavbarComponent,
     MainPageComponent,
-    LoginComponent
+    LoginComponent,
+    FlightsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    BrowserAnimationsModule
   ],
-  providers: [UserService, MainPageService, LogUserService, TokenStorage, {provide: HTTP_INTERCEPTORS,
+  providers: [UserService, MainPageService, FlightService,
+    LogUserService, TokenStorage, {provide: HTTP_INTERCEPTORS,
     useClass: Interceptor,
     multi : true}],
   bootstrap: [AppComponent]

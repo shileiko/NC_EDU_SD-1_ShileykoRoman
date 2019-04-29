@@ -12,4 +12,9 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  // changes() {
+  //   var temp = document.getElementById('pic1').src;
+  //   document.getElementById('pic1').src = document.getElementById('pic2').src;
+  //   document.getElementById('pic2').src = temp;
+  // }
 }

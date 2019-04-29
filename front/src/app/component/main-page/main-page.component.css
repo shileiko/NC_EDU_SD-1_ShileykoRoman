@@ -1,0 +1,22 @@
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+.search-form{
+  padding: 40px 40px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+}
+.search-form label{
+  color: white;
+}
+.search-form h1{
+  color: white;
+  text-align: center;
+  font-family: Courier New, monospace;
+
+}
+.search-form button{
+  font-size: x-large;
+  width: 100%;
+  letter-spacing: 5px;
+}
+
