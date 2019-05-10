@@ -1,7 +1,7 @@
 package com.project.aviatickets.model;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name="Flights")
@@ -17,10 +17,10 @@ public class Flight {
     private String toPlace;
 
     @Column(name = "DepartureTime")
-    private Calendar departureTime;
+    private Date departureTime;
 
     @Column(name = "ArrivalTime")
-    private Calendar arrivalTime;
+    private Date arrivalTime;
 
     @Column(name = "Transfers")
     private boolean transfers;
@@ -31,7 +31,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Calendar departureTime, Calendar arrivalTime, boolean transfers, String aviacompany) {
+    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
@@ -64,19 +64,19 @@ public class Flight {
         this.toPlace = toPlace;
     }
 
-    public Calendar getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Calendar departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Calendar getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Calendar arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 

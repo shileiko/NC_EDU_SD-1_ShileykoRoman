@@ -18,6 +18,7 @@ import { FlightsComponent } from './component/flights/flights.component';
 import {FlightService} from './service/flight.service';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MainFilterComponent } from './component/main-filter/main-filter.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NavbarComponent,
     MainPageComponent,
     LoginComponent,
-    FlightsComponent
+    FlightsComponent,
+    MainFilterComponent
   ],
   imports: [
     BrowserModule,

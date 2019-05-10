@@ -27,4 +27,7 @@ export class FlightService {
     return this.http.post<Flight>(this.flightUrl, flight);
   }
 
+  public filterFlight(departureTimeSearch, fromPlaceSearch, toPlaceSearch) {
+    return this.http.get<Flight[]>(this.flightUrl + '/filter/' + departureTimeSearch + '/' + fromPlaceSearch + '/' + toPlaceSearch);
+  }
 }

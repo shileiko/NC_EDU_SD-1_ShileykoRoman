@@ -1,20 +1,20 @@
 package com.project.aviatickets.models;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class Flight {
     private int id;
     private String fromPlace;
     private String toPlace;
-    private Calendar departureTime;
-    private Calendar arrivalTime;
+    private Date departureTime;
+    private Date arrivalTime;
     private boolean transfers;
     private String aviacompany;
 
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Calendar departureTime, Calendar arrivalTime, boolean transfers, String aviacompany) {
+    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
@@ -47,19 +47,19 @@ public class Flight {
         this.toPlace = toPlace;
     }
 
-    public Calendar getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Calendar departureTime) {
+    public void setDepartureTime(Date departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Calendar getArrivalTime() {
+    public Date getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Calendar arrivalTime) {
+    public void setArrivalTime(Date arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 

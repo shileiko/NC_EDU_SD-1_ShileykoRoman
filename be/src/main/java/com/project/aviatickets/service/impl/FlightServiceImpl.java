@@ -6,6 +6,10 @@ import com.project.aviatickets.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,5 +35,14 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<Flight> getAll() {
         return flightRepository.findAll();
+    }
+
+    @Override
+    public List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
+        Date departureTime = dateFormat.parse(departureTimeUrl);
+        return flightRepository.findFlightByDepartureTimeAndFromPlaceAndToPlace(
+                departureTime, toPlace, fromPlace
+        );
     }
 }

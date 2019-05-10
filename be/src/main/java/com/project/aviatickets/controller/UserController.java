@@ -1,6 +1,5 @@
 package com.project.aviatickets.controller;
 
-import com.project.aviatickets.model.Role;
 import com.project.aviatickets.model.User;
 import com.project.aviatickets.repository.RoleRepository;
 import com.project.aviatickets.service.impl.UserServiceImpl;

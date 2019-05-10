@@ -2,6 +2,7 @@ package com.project.aviatickets.service;
 
 import com.project.aviatickets.model.Flight;
 
+import java.text.ParseException;
 import java.util.List;
 
 public interface FlightService {
@@ -12,4 +13,6 @@ public interface FlightService {
     public void delete(Integer id);
 
     public List<Flight> getAll();
+
+    List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) throws ParseException;
 }

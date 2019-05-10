@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Flight} from '../../models/flight.model';
+import {Router} from '@angular/router';
+import {FlightService} from '../../service/flight.service';
+import {SearchFlight} from '../../models/searchFlight.model';
 
 @Component({
   selector: 'app-main-page',
@@ -6,15 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-page.component.css']
 })
 export class MainPageComponent implements OnInit {
-
-  constructor() { }
+  flights: Flight[];
+  searchFlight: SearchFlight;
+  constructor(private router: Router, private flightService: FlightService) { }
 
   ngOnInit() {
   }
 
-  // changes() {
-  //   var temp = document.getElementById('pic1').src;
-  //   document.getElementById('pic1').src = document.getElementById('pic2').src;
-  //   document.getElementById('pic2').src = temp;
-  // }
+  searchFlightDB(departureTimeSearch, fromPlaceSearch, toPlaceSearch) {
+    this.flightService.filterFlight(departureTimeSearch, fromPlaceSearch, toPlaceSearch)
+      .subscribe( data => {
+        this.flights = data as Flight[];
+      });
+  }
 }

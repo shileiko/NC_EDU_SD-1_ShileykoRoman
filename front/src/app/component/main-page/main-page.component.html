@@ -6,40 +6,51 @@
   <div class="search-form">
     <form class="form-inlin justify-content-center">
       <h1>Search your flight</h1>
+
+      <div class="row">
+        <div class="col">
+          <label for="departure">From: </label>
+        </div>
+        <div class="col">
+          <label for="arrival">To: </label>
+        </div>
+      </div>
+
         <div class="row">
           <div class="col">
-            <label for="departure">From: </label>
-            <input type="text" class="form-control" placeholder="From" id="departure">
+            <input [(ngModel)]="searchFlight.fromPlaceSearch" type="text" class="form-control" placeholder="From" id="departure">
           </div>
-          <!--<div class="col">-->
-            <!--<button (click)="changes()"></button>-->
-          <!--</div>-->
           <div class="col">
-            <label for="arrival">To: </label>
-            <input type="text" class="form-control" placeholder="To" id="arrival">
+            <input [(ngModel)]="searchFlight.toPlaceSearch" type="text" class="form-control" placeholder="To" id="arrival">
           </div>
         </div>
       <br/>
       <div class="row">
         <div class="col">
           <label for="departure-date">Departure date: </label>
-          <input type="text" class="form-control" placeholder="" id="departure-date">
-        </div>
-        <div class="col">
-          <label for="arrival-date">Arrival date: </label>
-          <input type="text" class="form-control" placeholder="" id="arrival-date">
+          <input [(ngModel)]="searchFlight.departureTimeSearch" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control" placeholder="" id="departure-date">
+          <owl-date-time #dt1></owl-date-time>
         </div>
       </div>
     </form>
     <br/>
-    <button class="btn btn-primary">Search</button>
+    <button (click)="searchFlightDB(searchFlight.departureTimeSearch, searchFlight.fromPlaceSearch,  searchFlight.toPlaceSearch)" class="btn btn-primary"><img width="5%" height="5%" src="http://abali.ru/wp-content/uploads/2012/11/samoletik_bumazhniy-600x588.png"></button>
   </div>
 </div>
 
+<table class="table table-striped">
+  <tbody>
+  <tr *ngFor="let flight of flights">
+    <td class="hidden">{{flight.id}}</td>
+    <td>{{flight.fromPlace}}</td>
+    <td>{{flight.toPlace}}</td>
+    <td>{{flight.arrivalTime | date:'medium' }}</td>
+    <td>{{flight.departureTime | date:'medium' }}</td>
+    <td>{{flight.aviacompany}}</td>
+    <td>{{flight.transfers}}</td>
+  </tr>
+  </tbody>
+</table>
 
 
-<label>
-  Date Time:
-  <input [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
-  <owl-date-time #dt></owl-date-time>
-</label>
+

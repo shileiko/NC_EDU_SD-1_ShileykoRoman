@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -48,6 +49,19 @@ public class FlightController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Flight>> getAllFlights(){
         List<Flight> flights = this.flightService.getAll();
+
+        if (flights.isEmpty()){
+            return new ResponseEntity<List<Flight>>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Flight>>(flights, HttpStatus.OK);
+    }
+
+    @GetMapping("/filter/{date}/{fromPlace}/{toPlace}")
+    public ResponseEntity<List<Flight>> filter (@PathVariable("date") String departureTimeUrl,
+                                                @PathVariable("fromPlace") String fromPlace,
+                                                @PathVariable("toPlace") String toPlace) throws ParseException {
+        List<Flight> flights = this.flightService.filter(departureTimeUrl, fromPlace, toPlace);
 
         if (flights.isEmpty()){
             return new ResponseEntity<List<Flight>>(HttpStatus.NOT_FOUND);

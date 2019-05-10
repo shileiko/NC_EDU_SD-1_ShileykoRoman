@@ -7,9 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class FlightServiceImpl implements FlightService {
@@ -41,4 +39,13 @@ public class FlightServiceImpl implements FlightService {
         restTemplate.delete(backendServerUrl + "api/v1/flightsba/" + id);
         return ResponseEntity.noContent().build();
     }
+
+    @Override
+    public List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) {
+        RestTemplate restTemplate = new RestTemplate();
+        Flight[] flightResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/flightsba/filter/" + departureTimeUrl + "/" + fromPlace + "/" + toPlace, Flight[].class);
+        return flightResponse == null ? Collections.emptyList() : Arrays.asList(flightResponse);
+    }
+
+
 }
