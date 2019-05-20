@@ -2,6 +2,7 @@ package com.project.aviatickets.service.impl;
 
 import com.project.aviatickets.model.Flight;
 import com.project.aviatickets.repository.FlightRepository;
+import com.project.aviatickets.repository.TicketRepository;
 import com.project.aviatickets.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,10 @@ import java.util.List;
 public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepository flightRepository;
+    @Autowired
+    private TicketRepository ticketRepository;
+    @Autowired
+    private TicketServiceImpl ticketService;
 
     @Override
     public Flight getById(Integer id) {
@@ -24,7 +29,15 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public void save(Flight flight) {
-        flightRepository.save(flight);
+        Flight f = new Flight();
+        f.setFromPlace(flight.getFromPlace());
+        f.setToPlace(flight.getToPlace());
+        f.setDepartureTime(flight.getDepartureTime());
+        f.setArrivalTime(flight.getArrivalTime());
+        f.setTransfers(flight.getTransfers());
+        f.setAviacompany(flight.getAviacompany());
+        f.setTisketskol(flight.getTisketskol());
+        flightRepository.save(f);
     }
 
     @Override
@@ -42,7 +55,7 @@ public class FlightServiceImpl implements FlightService {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
         Date departureTime = dateFormat.parse(departureTimeUrl);
         return flightRepository.findFlightByDepartureTimeAndFromPlaceAndToPlace(
-                departureTime, toPlace, fromPlace
+                departureTime, fromPlace, toPlace
         );
     }
 }

@@ -82,11 +82,9 @@ public class UserController {
     @RequestMapping(value="/login/{username}", method = RequestMethod.GET)
     public ResponseEntity<User> getUserByLogin(@PathVariable(name = "username") String username){
         User user = this.userService.findByUsername(username);
-
         if (user == null){
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
-
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 }

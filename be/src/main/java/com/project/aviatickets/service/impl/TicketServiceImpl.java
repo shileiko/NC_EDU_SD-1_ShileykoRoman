@@ -1,17 +1,28 @@
 package com.project.aviatickets.service.impl;
 
+import com.project.aviatickets.model.Flight;
 import com.project.aviatickets.model.Ticket;
+import com.project.aviatickets.model.User;
+import com.project.aviatickets.repository.FlightRepository;
 import com.project.aviatickets.repository.TicketRepository;
+import com.project.aviatickets.repository.UserRepository;
 import com.project.aviatickets.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TicketServiceImpl implements TicketService {
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private FlightRepository flightRepository;
 
     @Override
     public Ticket getById(Integer id) {
@@ -31,5 +42,11 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public List<Ticket> getAll() {
         return ticketRepository.findAll();
+    }
+
+    @Override
+    public String buyTicket(Ticket ticket) {
+
+        return "OK";
     }
 }

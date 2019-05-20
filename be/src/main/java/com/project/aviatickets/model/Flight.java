@@ -2,6 +2,7 @@ package com.project.aviatickets.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="Flights")
@@ -28,16 +29,25 @@ public class Flight {
     @Column(name = "Aviaoperator")
     private String aviacompany;
 
+    @Column(name = "tickets")
+    @OneToMany(mappedBy = "flight", cascade=CascadeType.ALL)
+    private List<Ticket> tickets;
+
+    @Column(name = "Ticketskol")
+    private int tisketskol;
+
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany) {
+    public Flight(int tisketskol,String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, List<Ticket> tickets) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.transfers = transfers;
         this.aviacompany = aviacompany;
+        this.tickets = tickets;
+        this.tisketskol = tisketskol;
     }
 
     public int getId() {
@@ -94,5 +104,21 @@ public class Flight {
 
     public void setAviacompany(String aviacompany) {
         this.aviacompany = aviacompany;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public int getTisketskol() {
+        return tisketskol;
+    }
+
+    public void setTisketskol(int tisketskol) {
+        this.tisketskol = tisketskol;
     }
 }

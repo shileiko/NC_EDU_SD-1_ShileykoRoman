@@ -1,31 +1,14 @@
-package com.project.aviatickets.model;
+package com.project.aviatickets.models;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-@Entity
-@Table(name = "tickets")
 public class Ticket {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="flight_id")
     private Flight flight;
-
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
     private User user;
-
-    @Column(name = "Price")
     private BigDecimal price;
-
-    @Column(name = "TypeOfSeat")
     private String typeOfSeat;
-
-    @Column(name = "Luggage")
     private boolean luggage;
 
     public Ticket() {

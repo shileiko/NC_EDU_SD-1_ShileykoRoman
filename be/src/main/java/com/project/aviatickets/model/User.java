@@ -3,6 +3,7 @@ package com.project.aviatickets.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,16 +32,21 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     private Role role;
 
+    @Column(name = "tickets")
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> tickets;
+
     public User() {
     }
 
-    public User(String username, String firstname, String surname, String password, String email, Role role) {
+    public User(String username, String firstname, String surname, String password, String email, Role role, List<Ticket> tickets) {
         this.username = username;
         this.firstname = firstname;
         this.surname = surname;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.tickets = tickets;
     }
 
     public String getFirstname() {
@@ -99,23 +105,32 @@ public class User {
         this.id = id;
     }
 
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return id == user.id &&
-                username.equals(user.username) &&
-                surname.equals(user.surname) &&
-                password.equals(user.password) &&
-                email.equals(user.email) &&
-                role.equals(user.role) &&
-                firstname.equals(user.firstname);
+                Objects.equals(username, user.username) &&
+                Objects.equals(firstname, user.firstname) &&
+                Objects.equals(surname, user.surname) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(role, user.role) &&
+                Objects.equals(tickets, user.tickets);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstname, username, surname, password, email, role);
+        return Objects.hash(id, username, firstname, surname, password, email, role, tickets);
     }
 
     @Override
@@ -123,10 +138,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", firstname='" + firstname + '\'' +
                 ", surname='" + surname + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
+                ", tickets=" + tickets +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package com.project.aviatickets.controller;
 
 import com.project.aviatickets.model.Ticket;
+import com.project.aviatickets.model.User;
 import com.project.aviatickets.service.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tickets/")
+@RequestMapping("/api/v1/ticketsba/")
 public class TicketController {
     @Autowired
     private TicketServiceImpl ticketService;
@@ -54,5 +55,11 @@ public class TicketController {
         }
 
         return new ResponseEntity<List<Ticket>>(ticket, HttpStatus.OK);
+    }
+
+    @PostMapping("buyticket")
+    @ResponseBody
+    public ResponseEntity<String> buyTicket(@RequestBody Ticket ticket){
+        return ResponseEntity.ok(ticketService.buyTicket(ticket));
     }
 }

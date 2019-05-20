@@ -1,3 +1,5 @@
+import {Ticket} from './ticket.model';
+
 export class User {
   id: string;
   username: string;
@@ -6,6 +8,7 @@ export class User {
   email: string;
   password: string;
   role: string;
+  tickets: Ticket[];
 
   constructor() {
   }

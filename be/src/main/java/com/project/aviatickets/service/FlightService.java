@@ -1,6 +1,7 @@
 package com.project.aviatickets.service;
 
 import com.project.aviatickets.model.Flight;
+import com.project.aviatickets.model.Ticket;
 
 import java.text.ParseException;
 import java.util.List;

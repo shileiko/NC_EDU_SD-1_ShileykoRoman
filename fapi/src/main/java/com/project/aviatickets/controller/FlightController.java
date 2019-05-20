@@ -1,6 +1,7 @@
 package com.project.aviatickets.controller;
 
 import com.project.aviatickets.models.Flight;
+import com.project.aviatickets.models.Response;
 import com.project.aviatickets.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,8 +26,8 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity saveFlight(@RequestBody Flight flight){
-        return ResponseEntity.ok(flightService.save(flight));
+    public Response saveFlight(@RequestBody Flight flight){
+        return flightService.save(flight);
     }
 
     @DeleteMapping("/{id}")

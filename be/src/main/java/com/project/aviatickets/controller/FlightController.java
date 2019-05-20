@@ -1,13 +1,14 @@
 package com.project.aviatickets.controller;
 
 import com.project.aviatickets.model.Flight;
+import com.project.aviatickets.model.Ticket;
 import com.project.aviatickets.service.impl.FlightServiceImpl;
+import com.project.aviatickets.service.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class FlightController {
     @Autowired
     private FlightServiceImpl flightService;
+    @Autowired
+    private TicketServiceImpl ticketService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Flight> getFlight(@PathVariable("id") Integer flightId){
@@ -41,7 +44,8 @@ public class FlightController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public ResponseEntity<Flight> saveFlight(@RequestBody @Valid Flight flight){
+    @ResponseBody
+    public ResponseEntity<Flight> saveFlight(@RequestBody Flight flight){
         this.flightService.save(flight);
         return new ResponseEntity<Flight>(flight, HttpStatus.CREATED);
     }

@@ -4,6 +4,7 @@
 <div class="col-sm-10 offset-sm-1">
   <div class="registration-form">
     <h1 class="display-4" style="text-align: center">All flights</h1>
+    <button style="margin: 2px" type="button" routerLink="/add_flight" class="btn btn-outline-secondary col-xs-3">Add flight</button>
     <form action="" class="form-inlin justify-content-center">
   <table class="table table-striped">
     <thead>
@@ -27,6 +28,7 @@
       <td>{{flight.aviacompany}}</td>
       <td>{{flight.transfers}}</td>
       <td><button class="btn btn-danger" (click)="deleteFlight(flight)"> Delete Flight </button></td>
+      <!--<td><button class="btn btn-success" (click)="setTickets()"> Add tickets </button></td>-->
     </tr>
     </tbody>
   </table>

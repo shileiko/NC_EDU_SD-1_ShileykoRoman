@@ -1,6 +1,8 @@
 package com.project.aviatickets.service.impl;
 
 import com.project.aviatickets.models.Flight;
+import com.project.aviatickets.models.Response;
+import com.project.aviatickets.models.Ticket;
 import com.project.aviatickets.service.FlightService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +24,9 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public Flight save(Flight flight) {
+    public Response save(Flight flight) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/v1/flightsba", flight, Flight.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/v1/flightsba", flight, Response.class).getBody();
     }
 
     @Override

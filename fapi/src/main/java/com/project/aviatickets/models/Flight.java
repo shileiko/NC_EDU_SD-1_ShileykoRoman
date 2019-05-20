@@ -1,6 +1,7 @@
 package com.project.aviatickets.models;
 
 import java.util.Date;
+import java.util.List;
 
 public class Flight {
     private int id;
@@ -10,17 +11,21 @@ public class Flight {
     private Date arrivalTime;
     private boolean transfers;
     private String aviacompany;
+    private int ticketkol;
+    private List<Ticket> tickets;
 
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany) {
+    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, int ticketkol, List<Ticket> tickets) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.transfers = transfers;
         this.aviacompany = aviacompany;
+        this.ticketkol = ticketkol;
+        this.tickets = tickets;
     }
 
     public int getId() {
@@ -77,5 +82,21 @@ public class Flight {
 
     public void setAviacompany(String aviacompany) {
         this.aviacompany = aviacompany;
+    }
+
+    public int getTicketkol() {
+        return ticketkol;
+    }
+
+    public void setTicketkol(int ticketkol) {
+        this.ticketkol = ticketkol;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

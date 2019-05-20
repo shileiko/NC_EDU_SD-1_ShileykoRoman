@@ -1,4 +1,5 @@
 import DateTimeFormat = Intl.DateTimeFormat;
+import {Ticket} from './ticket.model';
 
 export class Flight {
   id: string;
@@ -8,6 +9,8 @@ export class Flight {
   arrivalTime: DateTimeFormat;
   transfers: boolean;
   aviacompany: string;
+  ticketskol: number;
+  tickets: Ticket[];
   constructor() {
   }
 }

@@ -1,0 +1,13 @@
+.flights-form{
+  padding: 40px 40px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 10px;
+}
+.flights-form label{
+  color: white;
+}
+.flights-form h1{
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}

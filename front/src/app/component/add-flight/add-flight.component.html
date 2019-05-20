@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<br/>
+
+<div class="col-sm-8 offset-sm-2">
+  <div class="flights-form">
+    <h1 class="display-4">Add flight</h1>
+    <form action="" class="form-inlin justify-content-center">
+      <div class="form-group">
+        <label for="fromPlace">From place:</label>
+        <input type="text" [(ngModel)]="ticket.flight.fromPlace" placeholder="" name="fromPlace" class="form-control" id="fromPlace">
+      </div>
+
+      <div class="form-group">
+        <label for="toPlace">To place:</label>
+        <input type="text" [(ngModel)]="ticket.flight.toPlace" placeholder="" name="toPlace" class="form-control" id="toPlace">
+      </div>
+
+      <div class="form-group">
+        <label for="arrivalTime">Arrival time:</label>
+        <input type="datetime-local" [(ngModel)]="ticket.flight.arrivalTime" placeholder="" name="arrivalTime" class="form-control" id="arrivalTime">
+      </div>
+
+      <div class="form-group">
+        <label for="departureTime">Departure time:</label>
+        <input type="datetime-local" [(ngModel)]="ticket.flight.departureTime" placeholder="" name="departureTime" class="form-control" id="departureTime">
+      </div>
+
+      <div class="form-group">
+        <label for="aviacompany">Aviacompany:</label>
+        <input type="text" [(ngModel)]="ticket.flight.aviacompany" name="aviacompany" class="form-control" id="aviacompany">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Transfers</label>
+        <select [(ngModel)]="ticket.flight.transfers" class="form-control" id="exampleFormControlSelect1" name="transfers" required>
+          <option>true</option>
+          <option selected>false</option>
+        </select>
+      </div>
+
+      <div>
+        <h1 style="text-align: center">Tickets information</h1>
+      </div>
+
+      <div class="form-group">
+        <label for="ticketskol">Number of tickets:</label>
+        <input type="number" [(ngModel)]="ticket.flight.ticketskol" name="ticketskol" class="form-control" id="ticketskol">
+      </div>
+
+      <div class="form-group">
+        <label for="ticketprice">Ticket price:</label>
+        <input type="number" [(ngModel)]="ticket.price" name="ticketprice" class="form-control" id="ticketprice">
+      </div>
+
+      <div class="form-group">
+        <label for="typeseat">Type of seat:</label>
+        <input type="text" [(ngModel)]="ticket.typeOfSeat" name="typeseat" class="form-control" id="typeseat">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Luggage</label>
+        <select [(ngModel)]="ticket.luggage" class="form-control" id="exampleFormControlSelect2" name="luggage" required>
+          <option selected>true</option>
+          <option>false</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="addTicket()">Create flight</button>
+      </div>
+    </form>
+  </div>
+</div>
+

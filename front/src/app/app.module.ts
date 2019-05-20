@@ -16,9 +16,20 @@ import { MainPageComponent } from './component/main-page/main-page.component';
 import { LoginComponent } from './user/login.component';
 import { FlightsComponent } from './component/flights/flights.component';
 import {FlightService} from './service/flight.service';
-import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MainFilterComponent } from './component/main-filter/main-filter.component';
+import {MainFilterComponent} from './component/main-filter/main-filter.component';
+import {AddFlightComponent} from './component/add-flight/add-flight.component';
+import {TicketService} from './service/ticket.service';
+
+export const MY_NATIVE_FORMATS = {
+  fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'},
+  datePickerInput: {year: 'numeric', month: 'numeric', day: 'numeric'},
+  timePickerInput: {hour: 'numeric', minute: 'numeric'},
+  monthYearLabel: {year: 'numeric', month: 'short'},
+  dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
+  monthYearA11yLabel: {year: 'numeric', month: 'long'},
+};
 
 @NgModule({
   declarations: [
@@ -29,7 +40,8 @@ import { MainFilterComponent } from './component/main-filter/main-filter.compone
     MainPageComponent,
     LoginComponent,
     FlightsComponent,
-    MainFilterComponent
+    MainFilterComponent,
+    AddFlightComponent
   ],
   imports: [
     BrowserModule,
@@ -41,10 +53,9 @@ import { MainFilterComponent } from './component/main-filter/main-filter.compone
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [UserService, MainPageService, FlightService,
-    LogUserService, TokenStorage, {provide: HTTP_INTERCEPTORS,
-    useClass: Interceptor,
-    multi : true}],
+  providers: [UserService, MainPageService, FlightService, LogUserService, TokenStorage, TicketService,
+    {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi : true},
+    {provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
