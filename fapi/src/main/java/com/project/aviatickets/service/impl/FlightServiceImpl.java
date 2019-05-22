@@ -43,9 +43,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) {
+    public List<Flight> filter(String departureTimeFromUrl, String departureTimeToUrl, String fromPlace, String toPlace) {
         RestTemplate restTemplate = new RestTemplate();
-        Flight[] flightResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/flightsba/filter/" + departureTimeUrl + "/" + fromPlace + "/" + toPlace, Flight[].class);
+        Flight[] flightResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/flightsba/filter/" +
+                departureTimeFromUrl + "/" + departureTimeToUrl + "/" + fromPlace + "/" + toPlace, Flight[].class);
         return flightResponse == null ? Collections.emptyList() : Arrays.asList(flightResponse);
     }
 

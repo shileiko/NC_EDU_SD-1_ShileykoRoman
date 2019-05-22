@@ -12,5 +12,5 @@ public interface FlightService {
     Response save(Flight flight);
     Flight getById(Integer id);
     ResponseEntity delete(Integer id);
-    List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace);
+    List<Flight> filter(String departureTimeFromUrl, String departureTimeToUrl, String fromPlace, String toPlace);
 }

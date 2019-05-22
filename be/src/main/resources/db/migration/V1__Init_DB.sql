@@ -57,8 +57,19 @@ alter table users
     add constraint users_roles_fk
     foreign key (role_id) references roles (id);
 
+alter table flights AUTO_INCREMENT=11;
+
 insert into roles (id, rolename)
     values (1, 'ADMIN'), (2, 'USER');
+
+insert into users (
+    id,
+    email,
+    firstname,
+    password,
+    surname,
+    username,
+    role_id) values (1, 'admin@mail.ru', 'admin', 'admin','admin', 'admin', 1);
 
 insert into flights (
     id,
@@ -79,3 +90,15 @@ insert into flights (
         (8, '2019-10-03 14:15:00', 'Ryanair', '2019-10-03 11:30:00', 'Vilnius', 'Tenerife', 0, 10),
         (9, '2019-08-13 10:17:00', 'SpainAir', '2019-08-13 22:30:00', 'Madrid', 'Warsaw', 0, 10),
         (10, '2019-10-05 04:50:00', 'Ryanair', '2019-10-06 23:25:00', 'Tenerife', 'Vilnius', 0, 10);
+
+insert into tickets (
+    id,
+    luggage,
+    price,
+    type_of_seat,
+    flight_id) values
+        (1, 1, 1000, 'A', 1),
+        (2, 1, 1000, 'A', 1),
+        (3, 1, 1000, 'A', 1),
+        (4, 1, 1000, 'A', 1),
+        (5, 1, 1000, 'A', 1);

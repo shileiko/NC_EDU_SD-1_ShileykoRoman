@@ -51,11 +51,12 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) throws ParseException {
+    public List<Flight> filter(String departureTimeFromUrl, String departureTimeToUrl, String fromPlace, String toPlace) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
-        Date departureTime = dateFormat.parse(departureTimeUrl);
-        return flightRepository.findFlightByDepartureTimeAndFromPlaceAndToPlace(
-                departureTime, fromPlace, toPlace
+        Date departureTimeFrom = dateFormat.parse(departureTimeFromUrl);
+        Date departureTimeTo = dateFormat.parse(departureTimeToUrl);
+        return flightRepository.findFlightByDepartureTimeBetweenAndFromPlaceAndToPlace(
+                departureTimeFrom, departureTimeTo, fromPlace, toPlace
         );
     }
 }

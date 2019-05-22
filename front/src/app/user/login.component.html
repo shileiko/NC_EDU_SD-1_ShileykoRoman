@@ -14,10 +14,13 @@
                  placeholder="Password" style="margin-top: 10px">
           <input style="margin-top: 5px" onchange="if ($('#password').get(0).type=='password') $('#password').get(0).type='text'; else $('#password').get(0).type='password';" name="fff" type="checkbox" value="false"> Show password
         </div>
+      <div *ngIf="err">
+        <span style="margin-left: 15px" class="text-danger">Login or password is wrong</span>
+      </div>
       <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <div class="modal-footer">
-          <button class="btn btn-primary"  type="submit"   (click)="autorUser()" data-dismiss="modal">Log In</button>
+          <button class="btn btn-primary"  type="submit"  (click)="autorUser()">Log In</button>
         </div>
       </div>
     </div>

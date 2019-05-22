@@ -1,7 +1,6 @@
 package com.project.aviatickets.controller;
 
 import com.project.aviatickets.model.Flight;
-import com.project.aviatickets.model.Ticket;
 import com.project.aviatickets.service.impl.FlightServiceImpl;
 import com.project.aviatickets.service.impl.TicketServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,11 +60,12 @@ public class FlightController {
         return new ResponseEntity<List<Flight>>(flights, HttpStatus.OK);
     }
 
-    @GetMapping("/filter/{date}/{fromPlace}/{toPlace}")
-    public ResponseEntity<List<Flight>> filter (@PathVariable("date") String departureTimeUrl,
+    @GetMapping("/filter/{dateFrom}/{dateTo}/{fromPlace}/{toPlace}")
+    public ResponseEntity<List<Flight>> filter (@PathVariable("dateFrom") String departureTimeFromUrl,
+                                                @PathVariable("dateTo") String departureTimeToUrl,
                                                 @PathVariable("fromPlace") String fromPlace,
                                                 @PathVariable("toPlace") String toPlace) throws ParseException {
-        List<Flight> flights = this.flightService.filter(departureTimeUrl, fromPlace, toPlace);
+        List<Flight> flights = this.flightService.filter(departureTimeFromUrl, departureTimeToUrl, fromPlace, toPlace);
 
         if (flights.isEmpty()){
             return new ResponseEntity<List<Flight>>(HttpStatus.NOT_FOUND);

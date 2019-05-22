@@ -3,12 +3,20 @@ package com.project.aviatickets.controller;
 import com.project.aviatickets.models.User;
 import com.project.aviatickets.security.TokenProvider;
 import com.project.aviatickets.service.UserService;
+import com.project.aviatickets.service.impl.UserServiceImpl;
+import com.project.aviatickets.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -16,7 +24,10 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserValidator userValidator;
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @Autowired
     private TokenProvider tokenUtil;
@@ -24,11 +35,6 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Integer id) {
         return ResponseEntity.ok(userService.getById(id));
-    }
-
-    @PostMapping
-    public ResponseEntity saveUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.save(user));
     }
 
     @DeleteMapping("/{id}")
@@ -46,6 +52,15 @@ public class UserController {
     public User getUsername(@RequestHeader("Authorization") String token){
         String usernameFromToken = tokenUtil.getUsernameFromToken(token);
         return userService.findByUsername(usernameFromToken);
+    }
+
+    @PostMapping
+    public ResponseEntity saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
+        userValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
+        }
+        return ResponseEntity.ok(userService.save(user));
     }
 }
 

@@ -32,6 +32,6 @@ export class FlightService {
   }*/
 
   public filterFlight(departureTimeSearch, fromPlaceSearch, toPlaceSearch) {
-    return this.http.get<Flight[]>(this.flightUrl + '/filter/' + departureTimeSearch + '/' + fromPlaceSearch + '/' + toPlaceSearch);
+    return this.http.get<Flight[]>(this.flightUrl + '/filter/' + departureTimeSearch +  'T00:00:00.000+0000/' + departureTimeSearch +  'T23:59:59.000+0000/' + fromPlaceSearch + '/' + toPlaceSearch);
   }
 }

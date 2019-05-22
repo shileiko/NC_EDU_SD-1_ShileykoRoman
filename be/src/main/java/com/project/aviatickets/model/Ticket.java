@@ -1,6 +1,7 @@
 package com.project.aviatickets.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -22,6 +23,7 @@ public class Ticket {
     @Column(name = "Price")
     private BigDecimal price;
 
+    @NotBlank(message = "Please enter type of seat")
     @Column(name = "TypeOfSeat")
     private String typeOfSeat;
 

@@ -16,11 +16,11 @@ export class UserService {
   private userUrl = '/api/v1/users';
 
   public getUsers() {
-    return this.http.get<User[]>(this.userUrl);
+    return this.http.get<User[]>(this.userUrl, httpOptions);
   }
 
   public deleteUser(user) {
-    return this.http.delete(this.userUrl + '/' + user.id);
+    return this.http.delete(this.userUrl + '/' + user.id, httpOptions);
   }
 
   public createUser(user) {

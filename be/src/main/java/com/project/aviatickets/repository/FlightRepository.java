@@ -11,7 +11,8 @@ import java.util.List;
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
     Flight findFlightById(Integer id);
 
-    List<Flight> findFlightByDepartureTimeAndFromPlaceAndToPlace(@Param("departureTime") Date departureTime,
+    List<Flight> findFlightByDepartureTimeBetweenAndFromPlaceAndToPlace(Date departureTimeFrom,
+                                                                        Date departureTimeTo,
                                                                  @Param("fromPlace") String fromPlace,
                                                                  @Param("toPlace") String toPlace);
 }

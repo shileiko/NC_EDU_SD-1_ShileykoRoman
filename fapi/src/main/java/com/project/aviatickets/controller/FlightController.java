@@ -40,11 +40,12 @@ public class FlightController {
         return ResponseEntity.ok(flightService.getAll());
     }
 
-    @GetMapping("/filter/{departureTime}/{fromPlace}/{toPlace}")
-    public ResponseEntity<List<Flight>> filter (@PathVariable("departureTime") String departureTimeUrl,
+    @GetMapping("/filter/{departureTimeFrom}/{departureTimeTo}/{fromPlace}/{toPlace}")
+    public ResponseEntity<List<Flight>> filter (@PathVariable("departureTimeFrom") String departureTimeFromUrl,
+                                                @PathVariable("departureTimeTo") String departureTimeToUrl,
                                                 @PathVariable("fromPlace") String fromPlace,
                                                 @PathVariable("toPlace") String toPlace){
-        List<Flight> flights = this.flightService.filter(departureTimeUrl, fromPlace, toPlace);
+        List<Flight> flights = this.flightService.filter(departureTimeFromUrl, departureTimeToUrl, fromPlace, toPlace);
 
         return new ResponseEntity<List<Flight>>(flights, HttpStatus.OK);
     }

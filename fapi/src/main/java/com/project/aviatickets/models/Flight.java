@@ -11,20 +11,20 @@ public class Flight {
     private Date arrivalTime;
     private boolean transfers;
     private String aviacompany;
-    private int ticketkol;
+    private int ticketskol;
     private List<Ticket> tickets;
 
     public Flight() {
     }
 
-    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, int ticketkol, List<Ticket> tickets) {
+    public Flight(String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, int ticketskol, List<Ticket> tickets) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.transfers = transfers;
         this.aviacompany = aviacompany;
-        this.ticketkol = ticketkol;
+        this.ticketskol = ticketskol;
         this.tickets = tickets;
     }
 
@@ -84,12 +84,12 @@ public class Flight {
         this.aviacompany = aviacompany;
     }
 
-    public int getTicketkol() {
-        return ticketkol;
+    public int getTicketskol() {
+        return ticketskol;
     }
 
-    public void setTicketkol(int ticketkol) {
-        this.ticketkol = ticketkol;
+    public void setTicketskol(int ticketskol) {
+        this.ticketskol = ticketskol;
     }
 
     public List<Ticket> getTickets() {

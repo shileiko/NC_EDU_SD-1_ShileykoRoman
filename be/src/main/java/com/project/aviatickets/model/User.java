@@ -3,6 +3,9 @@ package com.project.aviatickets.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,18 +17,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotBlank(message = "Please enter username")
+    @Size(min = 4, max = 15, message = "Invalid username. It must be 4-15 symbols")
     @Column(name = "username")
     private String username;
 
+    @NotBlank(message = "Please enter firstname")
     @Column(name = "firstname")
     private String firstname;
 
+    @NotBlank(message = "Please enter surname")
     @Column(name = "surname")
     private String surname;
 
+    @NotBlank(message = "Please enter your password")
     @Column(name = "password")
     private String password;
 
+    @NotBlank(message = "Please enter an email")
+    @Email(message = "Please enter a valid email")
     @Column(name = "email")
     private String email;
 

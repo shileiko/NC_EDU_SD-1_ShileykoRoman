@@ -1,6 +1,7 @@
 package com.project.aviatickets.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
@@ -11,9 +12,11 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotBlank(message = "Please enter from place")
     @Column(name = "FromPlace")
     private String fromPlace;
 
+    @NotBlank(message = "Please enter to place")
     @Column(name = "ToPlace")
     private String toPlace;
 
@@ -26,8 +29,10 @@ public class Flight {
     @Column(name = "Transfers")
     private boolean transfers;
 
+    @NotBlank(message = "Please enter an aviacompany")
     @Column(name = "Aviaoperator")
     private String aviacompany;
+
 
     @Column(name = "tickets")
     @OneToMany(mappedBy = "flight", cascade=CascadeType.ALL)

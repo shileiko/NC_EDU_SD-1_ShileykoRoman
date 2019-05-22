@@ -29,8 +29,9 @@
       <div class="row">
         <div class="col">
           <label for="departure-date">Departure date: </label>
-          <input #departureTimeSearch [owlDateTimeTrigger]="dt1"  [owlDateTime]="dt1"  class="form-control" placeholder="" id="departure-date">
-          <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+          <input type="date" #departureTimeSearch class="form-control" placeholder="" id="departure-date">
+          <!--<input #departureTimeSearch [owlDateTimeTrigger]="dt1"  [owlDateTime]="dt1"  class="form-control" placeholder="" id="departure-date">
+          <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>-->
         </div>
       </div>
     </form>
@@ -47,21 +48,25 @@
         <div class="card-body">
           <div class="row">
             <h3 class="col text-center">{{flight.fromPlace}}</h3>
-            <h5 class="col text-center">time of flight</h5>
+            <h5 class="col text-center">__________________________</h5>
             <h3 class="col text-center">{{flight.toPlace}}</h3>
           </div>
           <div class="row">
-            <p class="col text-center">{{flight.arrivalTime | date:'medium' }}</p>
-            <p class="col text-center">{{flight.arrivalTime - flight.departureTime | date: 'medium'}}</p>
             <p class="col text-center">{{flight.departureTime | date:'medium' }}</p>
+            <p class="col text-center"></p>
+            <p class="col text-center">{{flight.arrivalTime | date:'medium' }}</p>
           </div>
           <button class="btn btn-warning col-sm-12" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Show tickets
           </button>
           <div style="margin: 2px" class="collapse" id="collapseExample">
-            <div class="card card-body">
-              {{flight.tickets}}
+            <div *ngFor="let tick of flight.tickets" class="card card-body">
+              {{tick.id}}
+              {{tick.price}}
+              {{tick.luggage}}
+              {{tick.typeOfSeat}}
             </div>
+            <button class="btn btn-success" type="button">buy</button>
           </div>
         </div>
       <div class="card-footer text-center">

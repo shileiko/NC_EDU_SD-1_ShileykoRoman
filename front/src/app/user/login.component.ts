@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   @Output() isAuthorized = new EventEmitter<boolean>();
   user: LoginUser;
+  err: boolean = false;
 
   constructor(private service: LogUserService, private tokens: TokenStorage, private router: Router) { }
 
@@ -27,6 +28,9 @@ export class LoginComponent implements OnInit {
         this.tokens.saveToken(data);
         this.isAuthorized.emit(true);
         alert('User logined successfully.');
+      },
+      error =>  {
+        this.err = true;
       }
     );
   }

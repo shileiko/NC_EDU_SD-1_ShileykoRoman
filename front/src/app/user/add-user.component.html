@@ -2,37 +2,58 @@
 <br/>
 <br/>
 
+<div class="alert alert-success col-sm-10 offset-sm-1" *ngIf="isCreated">
+  Your account is created successfully
+</div>
         <div class="col-sm-6 offset-sm-3">
           <div class="registration-form">
           <h1 class="display-4">Registration</h1>
-            <form action="" class="form-inlin justify-content-center">
+            <form (ngSubmit)="createUser()" action="" class="form-inlin justify-content-center">
     <div class="form-group">
       <label for="email">Email address:</label>
-      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email">
+      <input type="email" [(ngModel)]="user.email" placeholder="Email" name="email" class="form-control" id="email" required #email="ngModel">
+      <span class="text-danger" *ngIf="email.errors?.required && email.touched">
+            Email is required
+      </span>
     </div>
 
     <div class="form-group">
       <label for="username">Username:</label>
-      <input [(ngModel)]="user.username" placeholder="Username" name="username" class="form-control" id="username">
+      <input [(ngModel)]="user.username" placeholder="Username" name="username" class="form-control" id="username" required #username="ngModel">
+      <span class="text-danger" *ngIf="username.errors?.required && username.touched">
+            Username is required
+      </span>
     </div>
 
     <div class="form-group">
       <label for="firstname">First Name:</label>
-      <input [(ngModel)]="user.firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname">
+      <input [(ngModel)]="user.firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname" required #firstname="ngModel">
+      <span class="text-danger" *ngIf="firstname.errors?.required && firstname.touched">
+            Firtsname is required
+      </span>
     </div>
 
     <div class="form-group">
       <label for="surname">Last Name:</label>
-      <input [(ngModel)]="user.surname" placeholder="Last name" name="surname" class="form-control" id="surname">
+      <input [(ngModel)]="user.surname" placeholder="Last name" name="surname" class="form-control" id="surname" required #surname="ngModel">
+      <span class="text-danger" *ngIf="surname.errors?.required && surname.touched">
+            Surname is required
+      </span>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input [(ngModel)]="user.password" alt="" type="password" placeholder="Password" name="password" class="form-control" id="password">
+      <input [(ngModel)]="user.password" alt="" type="password" placeholder="Password" name="password" class="form-control" id="password" required #password="ngModel">
+      <span class="text-danger" *ngIf="password.errors?.required && password.touched">
+            Password is required
+      </span>
     </div>
 
               <div class="modal-footer">
-    <button class="btn btn-primary" (click)="createUser()">OK</button>
+                <div *ngIf="isExists">
+                  <span class="text text-danger">{{userError}}</span>
+                </div>
+    <input type="submit" value="Registration" class="btn btn-primary">
               </div>
             </form>
         </div>

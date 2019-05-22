@@ -15,5 +15,5 @@ public interface FlightService {
 
     public List<Flight> getAll();
 
-    List<Flight> filter(String departureTimeUrl, String fromPlace, String toPlace) throws ParseException;
+    List<Flight> filter(String departureTimeFromUrl, String departureTimeToUrl, String fromPlace, String toPlace) throws ParseException;
 }

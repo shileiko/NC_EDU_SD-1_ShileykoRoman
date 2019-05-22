@@ -82,4 +82,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(),
                 user.getPassword(), getAuthority(user));
     }
+
+    public User findByEmail(String email) {
+        RestTemplate restTemplate = new RestTemplate();
+        User user = restTemplate.getForObject(backendServerUrl + "/api/v1/usersba/email/" + email, User.class);
+        return user;
+    }
 }
