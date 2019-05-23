@@ -1,5 +1,6 @@
 package com.project.aviatickets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -39,9 +40,10 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade=CascadeType.ALL)
     private Role role;
 
+    @JsonIgnore
     @Column(name = "tickets")
     @OneToMany(mappedBy = "user")
     private List<Ticket> tickets;
@@ -115,6 +117,7 @@ public class User {
         this.id = id;
     }
 
+    @JsonIgnore
     public List<Ticket> getTickets() {
         return tickets;
     }

@@ -1,5 +1,6 @@
 package com.project.aviatickets.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class User {
     private String password;
     private String email;
     private Role role;
+    @JsonIgnore
     private List<Ticket> tickets;
 
     public User() {
@@ -85,6 +87,7 @@ public class User {
         this.role = role;
     }
 
+    @JsonIgnore
     public List<Ticket> getTickets() {
         return tickets;
     }

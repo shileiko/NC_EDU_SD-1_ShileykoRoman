@@ -16,8 +16,8 @@ public class Ticket {
     @JoinColumn(name="flight_id")
     private Flight flight;
 
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
     private User user;
 
     @Column(name = "Price")

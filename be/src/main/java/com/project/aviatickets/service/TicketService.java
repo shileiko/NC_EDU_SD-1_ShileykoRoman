@@ -13,5 +13,9 @@ public interface TicketService {
 
     public List<Ticket> getAll();
 
+    List<Ticket> findTicketsByFlightId(Integer id);
+
     String buyTicket(Ticket ticket);
+
+    List<Ticket> findTicketsByUserUsername(String username);
 }

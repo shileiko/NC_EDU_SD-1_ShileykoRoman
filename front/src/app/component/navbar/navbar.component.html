@@ -1,5 +1,5 @@
 <app-login (isAuthorized)="onChange($event)"></app-login>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav style="background-color: #c3ddfd;" class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/main">
       <img style="margin-right: 20px" src="http://pngimg.com/uploads/plane/plane_PNG5257.png" width="80" height="60" alt="">Aviatickets
@@ -19,9 +19,14 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" *ngIf="!isAuthorized">Login</button>
       <button style="margin: 2px" type="button" routerLink="/add" class="btn btn-outline-secondary col-xs-3" *ngIf="!isAuthorized">Registration</button>
     </div>
-    <span class="navbar-text" style="margin-right: 10px" *ngIf="isAuthorized">
-      {{username.username}}
-    </span>
+    <div class="dropdown">
+      <button style="margin-right: 10px" *ngIf="isAuthorized" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{username.username}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" routerLink="/profile">My profile</a>
+      </div>
+    </div>
     <button style="margin: 2px" type="button" (click)="logOut()" class="btn btn-outline-secondary col-xs-3" *ngIf="isAuthorized">Log out</button>
   </div>
 </nav>

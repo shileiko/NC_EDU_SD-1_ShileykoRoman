@@ -1,5 +1,7 @@
 package com.project.aviatickets.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
@@ -33,18 +35,18 @@ public class Flight {
     @Column(name = "Aviaoperator")
     private String aviacompany;
 
-
+    @JsonIgnore
     @Column(name = "tickets")
-    @OneToMany(mappedBy = "flight", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "flight")
     private List<Ticket> tickets;
 
     @Column(name = "Ticketskol")
-    private int tisketskol;
+    private int ticketskol;
 
     public Flight() {
     }
 
-    public Flight(int tisketskol,String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, List<Ticket> tickets) {
+    public Flight(int ticketskol,String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, List<Ticket> tickets) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;
@@ -52,7 +54,7 @@ public class Flight {
         this.transfers = transfers;
         this.aviacompany = aviacompany;
         this.tickets = tickets;
-        this.tisketskol = tisketskol;
+        this.ticketskol = ticketskol;
     }
 
     public int getId() {
@@ -111,6 +113,7 @@ public class Flight {
         this.aviacompany = aviacompany;
     }
 
+    @JsonIgnore
     public List<Ticket> getTickets() {
         return tickets;
     }
@@ -119,11 +122,11 @@ public class Flight {
         this.tickets = tickets;
     }
 
-    public int getTisketskol() {
-        return tisketskol;
+    public int getTicketskol() {
+        return ticketskol;
     }
 
-    public void setTisketskol(int tisketskol) {
-        this.tisketskol = tisketskol;
+    public void setTicketskol(int ticketskol) {
+        this.ticketskol = ticketskol;
     }
 }

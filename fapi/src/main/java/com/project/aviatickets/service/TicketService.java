@@ -1,9 +1,11 @@
 package com.project.aviatickets.service;
 
 import com.project.aviatickets.models.Ticket;
-import com.project.aviatickets.models.User;
+
+import java.util.List;
 
 public interface TicketService {
-    void buyTicket(User user, Ticket ticket);
     Ticket save(Ticket ticket);
+    List<Ticket> getTicketsByFlightId(Integer id);
+    List<Ticket> getTicketsByUserUsername(String username);
 }

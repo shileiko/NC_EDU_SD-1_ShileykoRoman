@@ -28,6 +28,17 @@ public class TicketController {
         return new ResponseEntity<Ticket>(ticket, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "flight/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Ticket>> getTicketsByFlightId(@PathVariable("id") Integer flightId){
+        List<Ticket> tickets = this.ticketService.findTicketsByFlightId(flightId);
+
+        if (tickets.isEmpty()){
+            return new ResponseEntity<List<Ticket>>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Ticket> deleteTicket(@PathVariable("id") Integer ticketId){
         Ticket ticket = this.ticketService.getById(ticketId);
@@ -58,8 +69,18 @@ public class TicketController {
     }
 
     @PostMapping("buyticket")
-    @ResponseBody
     public ResponseEntity<String> buyTicket(@RequestBody Ticket ticket){
         return ResponseEntity.ok(ticketService.buyTicket(ticket));
+    }
+
+    @RequestMapping(value = "user/{username}", method = RequestMethod.GET)
+    public ResponseEntity<List<Ticket>> getTicketsByUserUsername(@PathVariable("username") String username){
+        List<Ticket> tickets = this.ticketService.findTicketsByUserUsername(username);
+
+        if (tickets.isEmpty()){
+            return new ResponseEntity<List<Ticket>>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
     }
 }

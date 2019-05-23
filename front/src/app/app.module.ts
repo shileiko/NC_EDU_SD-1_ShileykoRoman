@@ -16,20 +16,12 @@ import { MainPageComponent } from './component/main-page/main-page.component';
 import { LoginComponent } from './user/login.component';
 import { FlightsComponent } from './component/flights/flights.component';
 import {FlightService} from './service/flight.service';
-import {OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MainFilterComponent} from './component/main-filter/main-filter.component';
 import {AddFlightComponent} from './component/add-flight/add-flight.component';
 import {TicketService} from './service/ticket.service';
-
-export const MY_NATIVE_FORMATS = {
-  fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'},
-  datePickerInput: {year: 'numeric', month: 'numeric', day: 'numeric'},
-  timePickerInput: {hour: 'numeric', minute: 'numeric'},
-  monthYearLabel: {year: 'numeric', month: 'short'},
-  dateA11yLabel: {year: 'numeric', month: 'long', day: 'numeric'},
-  monthYearA11yLabel: {year: 'numeric', month: 'long'},
-};
+import { ProfileComponent } from './component/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +33,8 @@ export const MY_NATIVE_FORMATS = {
     LoginComponent,
     FlightsComponent,
     MainFilterComponent,
-    AddFlightComponent
+    AddFlightComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +47,7 @@ export const MY_NATIVE_FORMATS = {
     BrowserAnimationsModule
   ],
   providers: [UserService, MainPageService, FlightService, LogUserService, TokenStorage, TicketService,
-    {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi : true},
-    {provide: OWL_DATE_TIME_FORMATS, useValue: MY_NATIVE_FORMATS}],
+    {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
