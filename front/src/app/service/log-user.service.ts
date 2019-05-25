@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {LoginUser} from '../models/loginUser.model';
 import {Router} from '@angular/router';
 
+const TOKEN_KEY = 'AuthToken';
 
 @Injectable()
 export class LogUserService {

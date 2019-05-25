@@ -22,6 +22,12 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    public Ticket buyTicket(Ticket ticket) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl + "/api/v1/ticketsba/buyticket", ticket, Ticket.class).getBody();
+    }
+
+    @Override
     public List<Ticket> getTicketsByFlightId(Integer id) {
         RestTemplate restTemplate = new RestTemplate();
         Ticket[] ticketResponse = restTemplate.getForObject(backendServerUrl + "/api/v1/ticketsba/flight/" + id, Ticket[].class);

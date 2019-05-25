@@ -23,8 +23,8 @@
       <td>{{user.firstname}}</td>
       <td>{{user.surname}}</td>
       <td>{{user.email}}</td>
-      <td>{{user.role}}</td>
-      <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete User</button></td>
+      <td>{{user.role.name}}</td>
+      <td><button class="btn btn-danger" *ngIf="user.username != 'admin'" (click)="deleteUser(user)"> Delete User</button></td>
     </tr>
     </tbody>
   </table>

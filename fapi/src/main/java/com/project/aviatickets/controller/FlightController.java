@@ -6,6 +6,7 @@ import com.project.aviatickets.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
@@ -30,11 +31,13 @@ public class FlightController {
         return flightService.save(flight);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable Integer id) {
         return flightService.delete(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Flight>> findAll(){
         return ResponseEntity.ok(flightService.getAll());

@@ -1,4 +1,5 @@
 import {Ticket} from './ticket.model';
+import {Role} from "./role.model";
 
 export class User {
   id: string;
@@ -7,7 +8,7 @@ export class User {
   surname: string;
   email: string;
   password: string;
-  role: string;
+  role: Role;
   tickets: Ticket[];
 
   constructor() {

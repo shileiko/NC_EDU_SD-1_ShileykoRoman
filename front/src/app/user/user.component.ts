@@ -11,10 +11,10 @@ import { UserService } from '../service/user.service';
 })
 export class UserComponent implements OnInit {
 
+  user: User;
   users: User[];
 
   constructor(private router: Router, private userService: UserService) {
-
   }
 
   ngOnInit() {

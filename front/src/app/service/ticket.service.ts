@@ -28,7 +28,7 @@ export class TicketService {
     return this.http.post<Ticket>(this.ticketUrl + '/buyticket', ticket, {headers: {'Authorization': localStorage.getItem(TOKEN_KEY), 'Content-Type': 'application/json'}});
   }
 
-  public findTicketsByUserUsername(): Observable<any> {
-    return this.http.get<Ticket[]>(this.ticketUrl + '/username', {headers: {Authorization: localStorage.getItem(TOKEN_KEY), 'Content-Type': 'application/json'}});
+  public findTicketsByUserUsername(username) {
+    return this.http.get<Ticket[]>(this.ticketUrl + '/username/' + username, {headers: {'Authorization': localStorage.getItem(TOKEN_KEY), 'Content-Type': 'application/json'}});
   }
 }

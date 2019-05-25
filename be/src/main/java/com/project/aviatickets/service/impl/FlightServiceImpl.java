@@ -29,14 +29,6 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public void save(Flight flight) {
-        /*Flight f = new Flight();
-        f.setFromPlace(flight.getFromPlace());
-        f.setToPlace(flight.getToPlace());
-        f.setDepartureTime(flight.getDepartureTime());
-        f.setArrivalTime(flight.getArrivalTime());
-        f.setTransfers(flight.getTransfers());
-        f.setAviacompany(flight.getAviacompany());
-        f.setTicketskol(flight.getTicketskol());*/
         flightRepository.save(flight);
     }
 

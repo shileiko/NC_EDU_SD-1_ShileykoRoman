@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/users"> List users <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/users" > List users <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/flights"> All flights <span class="sr-only">(current)</span></a>
@@ -25,9 +25,14 @@
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="#" routerLink="/profile">My profile</a>
+        <a class="dropdown-item" href="#" routerLink="/users">List users</a>
+        <a class="dropdown-item" href="#" routerLink="/flights">All flights</a>
       </div>
     </div>
     <button style="margin: 2px" type="button" (click)="logOut()" class="btn btn-outline-secondary col-xs-3" *ngIf="isAuthorized">Log out</button>
   </div>
 </nav>
 
+
+<!--
+*ngIf="username.username == 'admin'"-->

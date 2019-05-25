@@ -32,14 +32,15 @@ public class TicketController {
         String usernameFromToken = tokenProvider.getUsernameFromToken(token);
         User user = userService.findByUsername(usernameFromToken);
         ticket.setUser(user);
-        this.ticketService.save(ticket);
+        this.ticketService.buyTicket(ticket);
         return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
-    @GetMapping("/username")
-    public ResponseEntity<List<Ticket>> getTicketsByUserUsername(@RequestHeader("Authorization") String token){
-        String uft = tokenProvider.getUsernameFromToken(token);
-        List<Ticket> tickets = this.ticketService.getTicketsByUserUsername(uft);
+    @GetMapping("/username/{username}")
+    public ResponseEntity<List<Ticket>> getTicketsByUserUsername(@RequestHeader("Authorization") String token,
+                                                                 @PathVariable String username){
+       /* String uft = tokenProvider.getUsernameFromToken(token);*/
+        List<Ticket> tickets = this.ticketService.getTicketsByUserUsername(username);
         return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
     }
 

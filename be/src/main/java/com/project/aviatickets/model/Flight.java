@@ -37,7 +37,7 @@ public class Flight {
 
     @JsonIgnore
     @Column(name = "tickets")
-    @OneToMany(mappedBy = "flight")
+    @OneToMany(mappedBy = "flight", cascade=CascadeType.ALL)
     private List<Ticket> tickets;
 
     @Column(name = "Ticketskol")
@@ -46,7 +46,7 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(int ticketskol,String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, List<Ticket> tickets) {
+    public Flight(int ticketskol, String fromPlace, String toPlace, Date departureTime, Date arrivalTime, boolean transfers, String aviacompany, List<Ticket> tickets) {
         this.fromPlace = fromPlace;
         this.toPlace = toPlace;
         this.departureTime = departureTime;

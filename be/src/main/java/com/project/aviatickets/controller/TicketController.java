@@ -57,6 +57,12 @@ public class TicketController {
         return new ResponseEntity<Ticket>(ticket, HttpStatus.CREATED);
     }
 
+    @PostMapping("buyticket")
+    public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket){
+        this.ticketService.buyTicket(ticket);
+        return new ResponseEntity<Ticket>(ticket, HttpStatus.CREATED);
+    }
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Ticket>> getAllTickets(){
         List<Ticket> ticket = this.ticketService.getAll();
@@ -68,10 +74,6 @@ public class TicketController {
         return new ResponseEntity<List<Ticket>>(ticket, HttpStatus.OK);
     }
 
-    @PostMapping("buyticket")
-    public ResponseEntity<String> buyTicket(@RequestBody Ticket ticket){
-        return ResponseEntity.ok(ticketService.buyTicket(ticket));
-    }
 
     @RequestMapping(value = "user/{username}", method = RequestMethod.GET)
     public ResponseEntity<List<Ticket>> getTicketsByUserUsername(@PathVariable("username") String username){

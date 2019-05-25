@@ -49,6 +49,7 @@ public class FlightController {
         return new ResponseEntity<Flight>(flight, HttpStatus.CREATED);
     }
 
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<Flight>> getAllFlights(){
         List<Flight> flights = this.flightService.getAll();

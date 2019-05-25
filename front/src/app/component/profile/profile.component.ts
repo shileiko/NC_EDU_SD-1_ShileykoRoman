@@ -27,8 +27,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  findTicketsByUserUsername() {
-    this.serviceTicket.findTicketsByUserUsername().subscribe(data => {
+  findTicketsByUserUsername(username) {
+    this.serviceTicket.findTicketsByUserUsername(username).subscribe(data => {
       this.tickets = data as Ticket[];
     });
   }

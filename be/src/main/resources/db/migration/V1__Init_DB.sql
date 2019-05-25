@@ -57,8 +57,6 @@ alter table users
     add constraint users_roles_fk
     foreign key (role_id) references roles (id);
 
-alter table flights AUTO_INCREMENT=11;
-
 insert into roles (id, rolename)
     values (1, 'ADMIN'), (2, 'USER');
 
@@ -69,36 +67,6 @@ insert into users (
     password,
     surname,
     username,
-    role_id) values (1, 'admin@mail.ru', 'admin', 'admin','admin', 'admin', 1);
+    role_id) values (1, 'admin@mail.ru', 'admin', '$2a$10$INAXl6j1jp8Myyl3DjysYucb8PuUb8yTTV5HSi5k482tbBqoWN7y.','admin', 'admin', 1);
 
-insert into flights (
-    id,
-    arrival_time,
-    aviaoperator,
-    departure_time,
-    from_place,
-    to_place,
-    transfers,
-    ticketskol) values
-        (1, '2019-07-09 23:30:00', 'Belavia', '2019-07-09 19:00:00', 'Minsk', 'Milan', 0, 10),
-        (2, '2019-08-09 10:30:00', 'Aeroflot', '2019-08-10 19:30:00', 'Moscow', 'LosAngeles', 0, 10),
-        (3, '2019-07-15 10:10:00', 'Turkish Airlines', '2019-07-15 05:30:00', 'Stanbul', 'Minsk', 0, 10),
-        (4, '2019-07-15 06:10:00', 'Belavia', '2019-07-15 01:25:00', 'Milan', 'Minsk', 0, 10),
-        (5, '2019-08-03 18:30:00', 'Polish Airlines', '2019-08-03 15:00:00', 'Warsaw', 'Madrid', 0, 10),
-        (6, '2019-09-16 14:02:00', 'Aeroflot', '2019-09-16 04:30:00', 'Moscow', 'Tokyo', 0, 10),
-        (7, '2019-07-25 09:50:00', 'Aeroflot', '2019-07-26 07:22:00', 'New-York', 'Moscow', 0, 10),
-        (8, '2019-10-03 14:15:00', 'Ryanair', '2019-10-03 11:30:00', 'Vilnius', 'Tenerife', 0, 10),
-        (9, '2019-08-13 10:17:00', 'SpainAir', '2019-08-13 22:30:00', 'Madrid', 'Warsaw', 0, 10),
-        (10, '2019-10-05 04:50:00', 'Ryanair', '2019-10-06 23:25:00', 'Tenerife', 'Vilnius', 0, 10);
 
-insert into tickets (
-    id,
-    luggage,
-    price,
-    type_of_seat,
-    flight_id) values
-        (1, 1, 1000, 'A', 1),
-        (2, 1, 1000, 'A', 1),
-        (3, 1, 1000, 'A', 1),
-        (4, 1, 1000, 'A', 1),
-        (5, 1, 1000, 'A', 1);

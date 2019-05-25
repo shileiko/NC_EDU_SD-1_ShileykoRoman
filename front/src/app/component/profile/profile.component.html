@@ -1,4 +1,3 @@
-<app-login (isAuthorized)="onChange($event)"></app-login>
 <app-navbar></app-navbar>
 <br/>
 
@@ -19,13 +18,17 @@
         </div>
       </div>
       <div>
-        <button (click)="findTicketsByUserUsername()" class="btn btn-warning col-sm-6 offset-sm-3" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button (click)="findTicketsByUserUsername(user.username)" class="btn btn-warning col-sm-6" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           My tickets
         </button>
         <div style="margin: 15px" class="collapse" id="collapseExample">
           <div *ngFor="let ticket of tickets" class="card card-body">
-            <h1>{{ticket.flight.id}}</h1>
-            <h1>{{ticket.flight.aviacompany}}</h1>
+            <div class="row">
+              <span>From {{ticket.flight.fromPlace}} to {{ticket.flight.toPlace}}, {{ticket.flight.departureTime | date: 'medium'}}</span>
+            </div>
+            <div class="row">
+              <span>Price: {{ticket.price}}$</span>
+            </div>
           </div>
         </div>
       </div>

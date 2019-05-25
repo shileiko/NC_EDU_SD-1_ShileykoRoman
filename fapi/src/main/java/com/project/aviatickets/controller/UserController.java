@@ -42,7 +42,7 @@ public class UserController {
         return userService.delete(id);
     }
 
-   // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<User>> findAll(){
         return ResponseEntity.ok(userService.getAll());
@@ -53,6 +53,7 @@ public class UserController {
         String usernameFromToken = tokenUtil.getUsernameFromToken(token);
         return userService.findByUsername(usernameFromToken);
     }
+
 
     @PostMapping
     public ResponseEntity saveUser(@RequestBody @Valid User user, BindingResult bindingResult){
