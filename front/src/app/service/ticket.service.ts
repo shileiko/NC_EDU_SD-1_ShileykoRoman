@@ -31,4 +31,8 @@ export class TicketService {
   public findTicketsByUserUsername(username) {
     return this.http.get<Ticket[]>(this.ticketUrl + '/username/' + username, {headers: {'Authorization': localStorage.getItem(TOKEN_KEY), 'Content-Type': 'application/json'}});
   }
+
+  public cancelReservation(ticket) {
+    return this.http.post<Ticket>(this.ticketUrl + '/cancel', ticket, {headers: {'Authorization': localStorage.getItem(TOKEN_KEY), 'Content-Type': 'application/json'}});
+  }
 }

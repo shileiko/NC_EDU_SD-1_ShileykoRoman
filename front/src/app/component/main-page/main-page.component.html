@@ -42,6 +42,7 @@
 
 <br/>
 
+
 <div *ngFor="let flight of flights">
   <div class="col-sm-8 offset-sm-2">
     <div class="card">
@@ -67,6 +68,7 @@
                 <span class="col"><img width="35px" height="35px" src="https://cdn2.iconfinder.com/data/icons/traveling-2-glyph/32/Luggage-512.png">: {{ticket.luggage}}</span>
                 <button style="margin: 5px" type="button" class="col btn btn-secondary" data-toggle="modal" data-target=".bd-example-modal-lg">Show seating</button>
                 <button style="margin: 5px" (click)="buyTicket(ticket)" class="btn btn-success col" type="button">Buy this</button>
+                <!--<button style="margin: 5px"  class="btn btn-primary col disabled" type="button">Authorize please</button>-->
               </div>
             </div>
           </div>
@@ -78,6 +80,5 @@
   </div>
   <br/>
 </div>
-
 
 

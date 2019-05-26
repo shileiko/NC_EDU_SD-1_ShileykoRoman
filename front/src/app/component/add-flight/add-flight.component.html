@@ -1,41 +1,63 @@
 <app-navbar></app-navbar>
 <br/>
 
+<div class="alert alert-success col-sm-10 offset-sm-1" *ngIf="isCreated">
+  Flight is created successfully
+</div>
+
 <div class="col-sm-8 offset-sm-2" >
   <div class="flights-form">
     <h1 class="display-4">Add flight</h1>
     <form action="" class="form-inlin justify-content-center">
       <div class="form-group">
         <label for="fromPlace">From place:</label>
-        <input type="text" [(ngModel)]="ticket.flight.fromPlace" placeholder="" name="fromPlace" class="form-control" id="fromPlace">
+        <input type="text" [(ngModel)]="ticket.flight.fromPlace" placeholder="" name="fromPlace" class="form-control" id="fromPlace" required #fromPlace="ngModel">
+        <span class="text-danger" *ngIf="fromPlace.errors?.required && fromPlace.touched">
+            Field is required
+        </span>
       </div>
 
       <div class="form-group">
         <label for="toPlace">To place:</label>
-        <input type="text" [(ngModel)]="ticket.flight.toPlace" placeholder="" name="toPlace" class="form-control" id="toPlace">
+        <input type="text" [(ngModel)]="ticket.flight.toPlace" placeholder="" name="toPlace" class="form-control" id="toPlace" required #toPlace="ngModel">
+        <span class="text-danger" *ngIf="toPlace.errors?.required && toPlace.touched">
+            Field is required
+        </span>
       </div>
 
       <div class="form-group">
         <label for="departureTime">Departure time:</label>
-        <input type="datetime-local" [(ngModel)]="ticket.flight.departureTime" placeholder="" name="departureTime" class="form-control" id="departureTime">
+        <input type="datetime-local" [(ngModel)]="ticket.flight.departureTime" placeholder="" name="departureTime" class="form-control" id="departureTime" required #departureTime="ngModel">
+        <span class="text-danger" *ngIf="departureTime.errors?.required && departureTime.touched">
+            Departure time is required
+        </span>
       </div>
 
       <div class="form-group">
         <label for="arrivalTime">Arrival time:</label>
-        <input type="datetime-local" [(ngModel)]="ticket.flight.arrivalTime" placeholder="" name="arrivalTime" class="form-control" id="arrivalTime">
+        <input type="datetime-local" [(ngModel)]="ticket.flight.arrivalTime" placeholder="" name="arrivalTime" class="form-control" id="arrivalTime" required #arrivalTime="ngModel">
+        <span class="text-danger" *ngIf="arrivalTime.errors?.required && arrivalTime.touched">
+            Arrival time is required
+        </span>
       </div>
 
       <div class="form-group">
         <label for="aviacompany">Aviacompany:</label>
-        <input type="text" [(ngModel)]="ticket.flight.aviacompany" name="aviacompany" class="form-control" id="aviacompany">
+        <input type="text" [(ngModel)]="ticket.flight.aviacompany" name="aviacompany" class="form-control" id="aviacompany" required #aviacompany="ngModel">
+        <span class="text-danger" *ngIf="aviacompany.errors?.required && aviacompany.touched">
+            Aviacompany is required
+      </span>
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlSelect1">Transfers</label>
-        <select [(ngModel)]="ticket.flight.transfers" class="form-control" id="exampleFormControlSelect1" name="transfers" required>
+        <select [(ngModel)]="ticket.flight.transfers" class="form-control" id="exampleFormControlSelect1" name="transfers" required #transfers="ngModel">
           <option>true</option>
           <option selected>false</option>
         </select>
+        <span class="text-danger" *ngIf="transfers.errors?.required && transfers.touched">
+            Transfers is required
+      </span>
       </div>
 
       <div>
@@ -44,25 +66,37 @@
 
       <div class="form-group">
         <label for="ticketskol">Number of tickets:</label>
-        <input type="number" [(ngModel)]="ticket.flight.ticketskol" name="ticketskol" class="form-control" id="ticketskol">
+        <input type="number" [(ngModel)]="ticket.flight.ticketskol" name="ticketskol" class="form-control" id="ticketskol" required #ticketskol="ngModel">
+        <span class="text-danger" *ngIf="ticketskol.errors?.required && ticketskol.touched">
+            Field is required
+      </span>
       </div>
 
       <div class="form-group">
         <label for="ticketprice">Ticket price:</label>
-        <input type="number" [(ngModel)]="ticket.price" name="ticketprice" class="form-control" id="ticketprice">
+        <input type="number" [(ngModel)]="ticket.price" name="ticketprice" class="form-control" id="ticketprice" required #ticketprice="ngModel">
+        <span class="text-danger" *ngIf="ticketprice.errors?.required && ticketprice.touched">
+            Price is required
+      </span>
       </div>
 
       <div class="form-group">
         <label for="typeseat">Type of seat:</label>
-        <input type="text" [(ngModel)]="ticket.typeOfSeat" name="typeseat" class="form-control" id="typeseat">
+        <input type="text" [(ngModel)]="ticket.typeOfSeat" name="typeseat" class="form-control" id="typeseat" required #typeseat="ngModel">
+        <span class="text-danger" *ngIf="typeseat.errors?.required && typeseat.touched">
+            Type seat is required
+      </span>
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlSelect2">Luggage</label>
-        <select [(ngModel)]="ticket.luggage" class="form-control" id="exampleFormControlSelect2" name="luggage" required>
+        <select [(ngModel)]="ticket.luggage" class="form-control" id="exampleFormControlSelect2" name="luggage" required #luggage="ngModel">
           <option selected>true</option>
           <option>false</option>
         </select>
+        <span class="text-danger" *ngIf="luggage.errors?.required && luggage.touched">
+            Luggage is required
+      </span>
       </div>
 
       <div class="modal-footer">

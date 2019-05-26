@@ -14,7 +14,7 @@ import {TicketService} from "../../service/ticket.service";
 export class ProfileComponent implements OnInit {
   user: User;
   tickets: Ticket[];
-
+  isEmptya: boolean;
   constructor(private service: MainPageService, private serviceTicket: TicketService, private router: Router, private token: TokenStorage) { }
 
   ngOnInit() {
@@ -30,6 +30,15 @@ export class ProfileComponent implements OnInit {
   findTicketsByUserUsername(username) {
     this.serviceTicket.findTicketsByUserUsername(username).subscribe(data => {
       this.tickets = data as Ticket[];
+      this.isEmptya = false;
+    }, error1 => {
+      this.isEmptya = true;
+    });
+  }
+
+  cancelReservation(ticket: Ticket) {
+    this.serviceTicket.cancelReservation(ticket).subscribe( data => {
+      alert('Successfully cancel reservation');
     });
   }
 }

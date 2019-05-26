@@ -1,6 +1,5 @@
 package com.project.aviatickets.service.impl;
 
-import com.project.aviatickets.model.Role;
 import com.project.aviatickets.model.User;
 import com.project.aviatickets.repository.RoleRepository;
 import com.project.aviatickets.repository.UserRepository;
@@ -24,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(User user){
-        user.setRole(roleRepository.findByName("USER"));
+        user.setRole(roleRepository.findById(2));
         userRepository.save(user);
     }
 

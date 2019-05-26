@@ -22,6 +22,8 @@ import {MainFilterComponent} from './component/main-filter/main-filter.component
 import {AddFlightComponent} from './component/add-flight/add-flight.component';
 import {TicketService} from './service/ticket.service';
 import { ProfileComponent } from './component/profile/profile.component';
+import {AdminGuard} from "./guards/admin.guard";
+import {UserGuard} from "./guards/user.guard";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,14 @@ import { ProfileComponent } from './component/profile/profile.component';
     OwlNativeDateTimeModule,
     BrowserAnimationsModule
   ],
-  providers: [UserService, MainPageService, FlightService, LogUserService, TokenStorage, TicketService,
+  providers: [UserService,
+    MainPageService,
+    FlightService,
+    LogUserService,
+    TokenStorage,
+    TicketService,
+    AdminGuard,
+    UserGuard,
     {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi : true}],
   bootstrap: [AppComponent]
 })

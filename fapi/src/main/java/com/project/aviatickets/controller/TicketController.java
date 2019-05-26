@@ -36,10 +36,16 @@ public class TicketController {
         return new ResponseEntity<>(ticket, HttpStatus.OK);
     }
 
+    @PostMapping("/cancel")
+    public ResponseEntity<Ticket> cancelTicket(@RequestBody Ticket ticket){
+        ticket.setUser(null);
+        this.ticketService.buyTicket(ticket);
+        return new ResponseEntity<>(ticket, HttpStatus.OK);
+    }
+
     @GetMapping("/username/{username}")
     public ResponseEntity<List<Ticket>> getTicketsByUserUsername(@RequestHeader("Authorization") String token,
                                                                  @PathVariable String username){
-       /* String uft = tokenProvider.getUsernameFromToken(token);*/
         List<Ticket> tickets = this.ticketService.getTicketsByUserUsername(username);
         return new ResponseEntity<List<Ticket>>(tickets, HttpStatus.OK);
     }

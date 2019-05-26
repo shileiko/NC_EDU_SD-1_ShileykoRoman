@@ -13,6 +13,8 @@ import {TicketService} from '../../service/ticket.service';
 export class AddFlightComponent implements OnInit{
   ticket: Ticket = new Ticket();
   flight: Flight;
+  private isCreated: boolean = false;
+
   constructor(private router: Router, private flightService: FlightService, private ticketService: TicketService) { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class AddFlightComponent implements OnInit{
   }
 
   addTicket(): void {
-    this.ticketService.addTicket(this.ticket).subscribe();
+    this.ticketService.addTicket(this.ticket).subscribe( data => {
+      this.isCreated = true;
+    }, error => {
+      this.isCreated = false;
+    });
   }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MainPageService} from '../../service/main-page.service';
 import {Router} from '@angular/router';
 import {TokenStorage} from '../../config/token-provider';
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import {TokenStorage} from '../../config/token-provider';
 })
 export class NavbarComponent implements OnInit {
 
+  user: User;
   username: any;
   isAuthorized: boolean;
 
@@ -36,7 +38,6 @@ export class NavbarComponent implements OnInit {
         console.log(this.username.username);
         this.isAuthorized = true;
       }
-      /*this.router.navigate(['']);*/
     });
   }
 
